@@ -66,6 +66,6 @@ dependencies {
     debugImplementation 'androidx.compose.ui:ui-test-manifest'
     //dependência do navigation
     implementation 'androidx.navigation:navigation-compose:2.6.0'
-   // 𝗶𝗺𝗽𝗹𝗲𝗺𝗲𝗻𝘁𝗮𝘁𝗶𝗼𝗻 '𝗮𝗻𝗱𝗿𝗼𝗶𝗱𝘅.𝗻𝗮𝘃𝗶𝗴𝗮𝘁𝗶𝗼𝗻:𝗻𝗮𝘃𝗶𝗴𝗮𝘁𝗶𝗼𝗻-𝗰𝗼𝗺𝗽𝗼𝘀𝗲:𝟮.𝟲.𝟬'
-
+    // dependência da animação
+    implementation "com.google.accompanist:accompanist-navigation-animation:0.30.1"
 }
