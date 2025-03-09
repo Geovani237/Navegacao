@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import br.com.fiap.navegacao.screens.LoginScreen
 import br.com.fiap.navegacao.screens.MenuScreen
 import br.com.fiap.navegacao.screens.PedidosScreen
@@ -31,10 +32,24 @@ class MainActivity : ComponentActivity() {
                 ) {
                    val navController = rememberNavController()
                     NavHost(navController = navController, startDestination = "login"){
-                        composable(route = "login"){ LoginScreen(navController)}
-                        composable(route = "menu") { MenuScreen(navController)}
-                        composable(route = "pedidos") { PedidosScreen(navController)}
-                        composable(route = "perfil") { PerfilScreen(navController)}
+                        composable(route = "login"){
+                            LoginScreen(navController)
+                        }
+                        composable(route = "menu") {
+                            MenuScreen(navController)
+                        }
+                        composable(
+                            route = "pedidos?numero={numero}",
+                            arguments = listOf(navArgument(name = "numero"){
+                                defaultValue = ""
+                            })
+                        ) {
+                            PedidosScreen(navController, it.arguments?.getString("numero")!!)
+                        }
+                        composable(route = "perfil/{nome}") {
+                            val nome = it.arguments?.getString("nome")
+                            PerfilScreen(navController, nome!!) // double bang, ela trata o nulo
+                        }
                     }
                 }
             }
